@@ -1,15 +1,22 @@
  .box {
-     font-size: 30px;
+     font-size: 35px;
      padding: 10px;
-     width: 40px;
-     border: 1px solid black;
+     width: 60px;
+     border: 1px solid rgb(185, 185, 185);
      margin: 0.5px;
- }
- 
- a:hover {
-    cursor: pointer;
-  }
+}
 
- p {
+.box:hover {
+    font-size: 30px;
+    cursor: pointer;
+}
+ 
+a:hover {
+    cursor: pointer;
+    font-size: 26px;
+}
+
+
+p {
      margin: 0;
- }
+}

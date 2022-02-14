@@ -1,5 +1,6 @@
-import { create } from 'canvas-confetti';
 import dayjs from 'dayjs'
+import Mydays from './daysclass';
+
 
 
 function getDaysInMonth(month, year) {
@@ -14,23 +15,22 @@ function getDaysInMonth(month, year) {
 
 let currentDate = dayjs();
 let getInputValue = document.getElementById('input-date');
-let getCalendar = document.getElementById('calendar')
+let getCalendar = document.getElementById('calendar');
+let detailDay = document.getElementById('day-detail');
+
+
 getInputValue.setAttribute('value', currentDate.$y + '-' + 0+(currentDate.$M+1) + '-' + currentDate.$D)
-
-
-let daysArray = []
+    let daysArray = []
     let newDate = dayjs(getInputValue.value)
     daysArray.push(getDaysInMonth(newDate.$M, newDate.$y))
     daysArray[0].map(day => {
         let thedate = dayjs(day);
         let createDiv = document.createElement('div');
-        let createAelement = document.createElement('a')
         let createtextContent = document.createElement('p');
+        createtextContent.setAttribute('onclick', 'showDetails()');
         createDiv.setAttribute('class', 'box');
-        createAelement.setAttribute('onclick', 'showDetails()');
         createtextContent.textContent = thedate.$D;
-        createAelement.appendChild(createtextContent)
-        createDiv.appendChild(createAelement)
+        createDiv.appendChild(createtextContent)
         getCalendar.appendChild(createDiv)
 })
 
