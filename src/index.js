@@ -38,7 +38,7 @@ getInputValue.setAttribute('value', currentDate.$y + '-' + 0+(currentDate.$M+1) 
 
 getInputValue.addEventListener('change', ()=> {
     getCalendar.innerHTML = ''
-    let daysArray = []
+    daysArray = []
     let newDate = dayjs(getInputValue.value)
     daysArray.push(getDaysInMonth(newDate.$M, newDate.$y))
     daysArray[0].map(day => {
