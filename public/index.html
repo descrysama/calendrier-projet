@@ -10,7 +10,30 @@
     <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.3/dist/paper.min.css">
   </head>
   <body>
-    
+    <!-- Navbar -->
+    <header>
+      <nav class="border split-nav">
+        <div class="nav-brand">
+          <h3><a>Calendrier P#17</a></h3>
+        </div>
+        <div class="collapsible">
+          <input id="collapsible1" type="checkbox" name="collapsible1">
+        </div>
+      </nav>
+    </header>
+
+    <!-- Contenu -->
+    <div class="row flex-spaces">
+      <div class="paper text-center" style="width: 40rem;">
+        <h3>Calendrier :</h3>
+        <input type="date" id="input-date">
+        <div id="calendar" class="row col-6 col">
+        </div>
+      </div>
+      <div class="paper text-center" style="width: 40rem;">
+        <h3>Evenements :</h3>
+      </div>
+    </div>
 
 
     <script type="module" src="/dist/index.js"></script>
