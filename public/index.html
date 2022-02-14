@@ -10,8 +10,47 @@
     <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.3/dist/paper.min.css">
   </head>
   <body>
+    <header>
+      <nav class="border split-nav">
+        <div class="nav-brand">
+          <h3><a href="#">P#17 Calendar</a></h3>
+        </div>
+        <div class="collapsible">
+          <input id="collapsible1" type="checkbox" name="collapsible1">
+          <label for="collapsible1">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </label>
+          <div class="collapsible-body">
+            <ul class="inline">
+              <li><a href="">Cliques pas là</a></li>
+              <li><a href="">Ici non plus</a></li>
+              <li><a href="">et pas là non plus</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     
+    <div>
+      <div class="paper" style="width: 20rem;">
+        <div class="card-body">
+          <div id="input-container" class="container-lg">
+            <label for="start"> Date :</label>
+          </div>
+        </div>
+      </div>
+  
+      <div class="paper" style="width: 40rem;">
+        <div class="card-body">
 
+        </div>
+      </div>
+    </div>
+    
+    
+      
 
     <script type="module" src="/dist/index.js"></script>
   </body>
