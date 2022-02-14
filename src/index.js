@@ -19,22 +19,27 @@ let getCalendar = document.getElementById('calendar');
 let detailDay = document.getElementById('day-detail');
 
 
+
+
+
 getInputValue.setAttribute('value', currentDate.$y + '-' + 0+(currentDate.$M+1) + '-' + currentDate.$D)
-    let daysArray = []
-    let newDate = dayjs(getInputValue.value)
-    daysArray.push(getDaysInMonth(newDate.$M, newDate.$y))
-    daysArray[0].map(day => {
-        let thedate = dayjs(day);
-        let createDiv = document.createElement('div');
-        let createtextContent = document.createElement('p');
-        createtextContent.setAttribute('onclick', 'showDetails()');
-        createDiv.setAttribute('class', 'box');
-        createtextContent.textContent = thedate.$D;
-        createDiv.appendChild(createtextContent)
-        getCalendar.appendChild(createDiv)
+let daysArray = []
+let newDate = dayjs(getInputValue.value)
+daysArray.push(getDaysInMonth(newDate.$M, newDate.$y))
+daysArray[0].map(day => {
+    let thedate = dayjs(day);
+    let createDiv = document.createElement('div');
+    let createtextContent = document.createElement('p');
+    createDiv.setAttribute('onclick', 'showDetails();');
+    createDiv.setAttribute('class', 'box');
+    createtextContent.textContent = thedate.$D;
+    createDiv.appendChild(createtextContent)
+    getCalendar.appendChild(createDiv)
 })
 
-
+function showDetails(){
+    console.log(getInputValue.value);
+}
 
 getInputValue.addEventListener('change', ()=> {
     getCalendar.innerHTML = ''
@@ -45,9 +50,11 @@ getInputValue.addEventListener('change', ()=> {
         let thedate = dayjs(day);
         let createDiv = document.createElement('div');
         let createtextContent = document.createElement('p');
+        createDiv.setAttribute('onclick', 'showDetails();');
         createDiv.setAttribute('class', 'box');
         createtextContent.textContent = thedate.$D;
         createDiv.appendChild(createtextContent)
         getCalendar.appendChild(createDiv)
     })
 })
+
