@@ -32,7 +32,7 @@
       </div>
       <div class="flex-center">
         
-        <div id="set-success" class="paper text-center" style="width: 40rem;">
+        <div class="paper text-center" style="width: 40rem;">
           <h3>Detail du jour :</h3>
           <div id="day-detail">
 
@@ -41,9 +41,14 @@
             <input id="event-input" type="text">
             <button type="submit">Ajouter un event</button>
           </form>
+          <div id="set-success"></div>
         </div>
         <div class="paper text-center" style="width: 40rem;">
           <h3>Tout les evenements :</h3>
+          <button id='remover' onclick="DeleteAll()">Delete ALL</button>
+          <div id="all-events">
+
+          </div>
         </div>
       </div>
     </div>

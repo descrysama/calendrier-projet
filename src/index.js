@@ -44,6 +44,11 @@ let getDaysbutton = document.querySelectorAll('.daysbutton');
         let newDates = currentDate;
         newDates = dayjs(getInputValue.value)
         getDaysbutton[i].onclick = () => {
+            let successSection = document.getElementById('set-success');
+            if (successSection.hasChildNodes() == true) {
+                let selectIt = document.getElementById("alert")
+                successSection.removeChild(selectIt)
+            }
             detailDay.innerHTML = '';
             let getEvent = sessionStorage.getItem(getDaysbutton[i].textContent+'/'+(newDates.$M+1)+'/'+newDates.$y);
             let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, getEvent);
@@ -81,6 +86,11 @@ getInputValue.addEventListener('change', ()=> {
         newDates = dayjs(getInputValue.value)
 
         getDaysbutton[i].onclick = () => {
+            let successSection = document.getElementById('set-success');
+            if (successSection.hasChildNodes() == true) {
+                let selectIt = document.getElementById("alert")
+                successSection.removeChild(selectIt)
+            }
             detailDay.innerHTML = '';
             let getEvent = sessionStorage.getItem(getDaysbutton[i].textContent+'/'+(newDates.$M+1)+'/'+newDates.$y);
             let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, getEvent);
@@ -100,6 +110,11 @@ getInputValue.addEventListener('change', ()=> {
 })
 
 getFormAdd.addEventListener('submit', (e) =>{
+    let successSection = document.getElementById('set-success');
+            if (successSection.hasChildNodes() == true) {
+                let selectIt = document.getElementById("alert")
+                successSection.removeChild(selectIt)
+            }
     e.preventDefault()
     let selectSelectedDate = document.getElementById('current-selected-date');
     let selectEventInput = document.getElementById('event-input');
@@ -107,7 +122,36 @@ getFormAdd.addEventListener('submit', (e) =>{
     document.getElementById('event').textContent = selectEventInput.value;
     let createAlert = document.createElement('div');
     createAlert.setAttribute('class', 'alert alert-success');
+    createAlert.setAttribute('id', 'alert');
     createAlert.textContent = 'Evenement Ajouté avec succes.';
     document.getElementById('set-success').appendChild(createAlert)
     selectEventInput.value = '';
+    document.getElementById('all-events').innerHTML = ''
+    allEvents()
 })
+
+
+const allEvents = () => {
+    let allEvents = document.getElementById('all-events');
+    let values = [];
+    let keys = Object.keys(sessionStorage);
+    let i = keys.length;
+    while (i--) {
+        values.push(sessionStorage.getItem(keys[i]));
+    }
+    keys.reverse()
+
+    for (i = 0; i < keys.length; i++) {
+        let createEvent = document.createElement('div');
+        createEvent.setAttribute('class', 'paper');
+        createEvent.textContent = keys[i] + ' : ' + values[i];
+        allEvents.appendChild(createEvent)
+    }
+}
+
+document.getElementById('remover').onclick = () => {
+    sessionStorage.clear();
+    document.getElementById('all-events').innerHTML = '';
+}
+
+allEvents()
