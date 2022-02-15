@@ -106,5 +106,5 @@ getFormAdd.addEventListener('submit', (e) =>{
     let selectEventInput = document.getElementById('event-input');
     sessionStorage.setItem(selectSelectedDate.textContent, selectEventInput.value)
     document.getElementById('event').textContent = selectEventInput.value;
-    selectEventInput.value = ''
+    selectEventInput.value = '';
 })
