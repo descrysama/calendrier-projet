@@ -50,6 +50,7 @@ let getDaysbutton = document.querySelectorAll('.daysbutton');
                 let createh3 = document.createElement('h3');
                 let createLi = document.createElement('li');
                 createh3.textContent = day.day + '/' + day.month + '/' + day.year;
+                createh3.setAttribute('id','current-selected-date')
                 createLi.textContent = day.event;
                 createDiv.appendChild(createh3);
                 createDiv.appendChild(createLi);
@@ -76,13 +77,16 @@ getInputValue.addEventListener('change', ()=> {
     for (let i = 0; i < getDaysbutton.length; i++) {
             let newDates = currentDate;
             newDates = dayjs(getInputValue.value)
-            let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, 'aucun');
+            let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, getEvent);
+            let getEvent = sessionStorage.getItem(getDaysbutton[i]+'/'+(newDates.$M+1)+newDates.$y);
+            day.get
             getDaysbutton[i].onclick = () => {
                 detailDay.innerHTML = '';
                 let createDiv = document.createElement('div');
                 let createh3 = document.createElement('h3');
                 let createLi = document.createElement('li');
                 createh3.textContent = day.day + '/' + day.month + '/' + day.year;
+                createh3.setAttribute('id','current-selected-date')
                 createLi.textContent = day.event;
                 createDiv.appendChild(createh3);
                 createDiv.appendChild(createLi);
@@ -93,5 +97,7 @@ getInputValue.addEventListener('change', ()=> {
 
 getFormAdd.addEventListener('submit', (e) =>{
     e.preventDefault()
-    
+    let selectSelectedDate = document.getElementById('current-selected-date');
+    let selectEventInput = document.getElementById('event-input');
+    sessionStorage.setItem(selectSelectedDate.textContent, selectEventInput.value)
 })
