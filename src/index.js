@@ -1,3 +1,4 @@
+import { create } from 'canvas-confetti';
 import dayjs from 'dayjs'
 import Mydays from './daysclass';
 
@@ -30,31 +31,62 @@ daysArray[0].map(day => {
     let thedate = dayjs(day);
     let createDiv = document.createElement('div');
     let createtextContent = document.createElement('p');
-    createDiv.setAttribute('onclick', 'showDetails();');
     createDiv.setAttribute('class', 'box');
     createtextContent.textContent = thedate.$D;
+    createtextContent.setAttribute('class', 'daysbutton')
     createDiv.appendChild(createtextContent)
     getCalendar.appendChild(createDiv)
 })
 
-function showDetails(){
-    console.log(getInputValue.value);
-}
+let getDaysbutton = document.querySelectorAll('.daysbutton');
+    for (let i = 0; i < getDaysbutton.length; i++) {
+            let newDates = currentDate;
+            newDates = dayjs(getInputValue.value)
+            getDaysbutton[i].onclick = () => {
+                detailDay.innerHTML = '';
+                let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, 'aucun');
+                let createDiv = document.createElement('div');
+                let createh3 = document.createElement('h3');
+                let createLi = document.createElement('li');
+                createh3.textContent = day.day + '/' + day.month + '/' + day.year;
+                createLi.textContent = day.event;
+                createDiv.appendChild(createh3);
+                createDiv.appendChild(createLi);
+                detailDay.appendChild(createDiv);
+        }
+    }
 
 getInputValue.addEventListener('change', ()=> {
     getCalendar.innerHTML = ''
-    daysArray = []
+    let daysArray = []
     let newDate = dayjs(getInputValue.value)
     daysArray.push(getDaysInMonth(newDate.$M, newDate.$y))
     daysArray[0].map(day => {
         let thedate = dayjs(day);
         let createDiv = document.createElement('div');
         let createtextContent = document.createElement('p');
-        createDiv.setAttribute('onclick', 'showDetails();');
         createDiv.setAttribute('class', 'box');
         createtextContent.textContent = thedate.$D;
+        createtextContent.setAttribute('class', 'daysbutton')
         createDiv.appendChild(createtextContent)
         getCalendar.appendChild(createDiv)
     })
+    let getDaysbutton = document.querySelectorAll('.daysbutton');
+    for (let i = 0; i < getDaysbutton.length; i++) {
+            let newDates = currentDate;
+            newDates = dayjs(getInputValue.value)
+            getDaysbutton[i].onclick = () => {
+                detailDay.innerHTML = '';
+                let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, 'aucun');
+                let createDiv = document.createElement('div');
+                let createh3 = document.createElement('h3');
+                let createLi = document.createElement('li');
+                createh3.textContent = day.day + '/' + day.month + '/' + day.year;
+                createLi.textContent = day.event;
+                createDiv.appendChild(createh3);
+                createDiv.appendChild(createLi);
+                detailDay.appendChild(createDiv);
+        }
+    }
 })
 
