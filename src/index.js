@@ -43,9 +43,11 @@ let getDaysbutton = document.querySelectorAll('.daysbutton');
     for (let i = 0; i < getDaysbutton.length; i++) {
             let newDates = currentDate;
             newDates = dayjs(getInputValue.value)
+            let getEvent = sessionStorage.getItem(getDaysbutton[i].textContent+'/'+(newDates.$M+1)+'/'+newDates.$y) || 'Vide';
+            console.log(getEvent);
+            let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, getEvent);
             getDaysbutton[i].onclick = () => {
                 detailDay.innerHTML = '';
-                let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, 'aucun');
                 let createDiv = document.createElement('div');
                 let createh3 = document.createElement('h3');
                 let createLi = document.createElement('li');
@@ -77,9 +79,8 @@ getInputValue.addEventListener('change', ()=> {
     for (let i = 0; i < getDaysbutton.length; i++) {
             let newDates = currentDate;
             newDates = dayjs(getInputValue.value)
+            let getEvent = sessionStorage.getItem(getDaysbutton[i]+'/'+(newDates.$M+1)+'/'+newDates.$y);
             let day = new Mydays(getDaysbutton[i].textContent, (newDates.$M+1), newDates.$y, getEvent);
-            let getEvent = sessionStorage.getItem(getDaysbutton[i]+'/'+(newDates.$M+1)+newDates.$y);
-            day.get
             getDaysbutton[i].onclick = () => {
                 detailDay.innerHTML = '';
                 let createDiv = document.createElement('div');
@@ -96,7 +97,6 @@ getInputValue.addEventListener('change', ()=> {
 })
 
 getFormAdd.addEventListener('submit', (e) =>{
-    e.preventDefault()
     let selectSelectedDate = document.getElementById('current-selected-date');
     let selectEventInput = document.getElementById('event-input');
     sessionStorage.setItem(selectSelectedDate.textContent, selectEventInput.value)
