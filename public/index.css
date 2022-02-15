@@ -25,6 +25,10 @@ li {
     margin: 10px;
 }
 
+button {
+    margin: 10px !important;
+}
+
 #form-add {
     display: flex;
     flex-direction: column;
