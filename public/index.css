@@ -23,7 +23,9 @@ p {
 
 li {
     margin: 10px;
+    list-style-type: none;
 }
+
 
 button {
     margin: 10px !important;

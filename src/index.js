@@ -57,7 +57,6 @@ let getDaysbutton = document.querySelectorAll('.daysbutton');
             createDiv.appendChild(createh3);
             createDiv.appendChild(createLi);
             detailDay.appendChild(createDiv);
-            
         }
     }
 
@@ -106,5 +105,9 @@ getFormAdd.addEventListener('submit', (e) =>{
     let selectEventInput = document.getElementById('event-input');
     sessionStorage.setItem(selectSelectedDate.textContent, selectEventInput.value)
     document.getElementById('event').textContent = selectEventInput.value;
+    let createAlert = document.createElement('div');
+    createAlert.setAttribute('class', 'alert alert-success');
+    createAlert.textContent = 'Evenement Ajouté avec succes.';
+    document.getElementById('set-success').appendChild(createAlert)
     selectEventInput.value = '';
 })
