@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import Mydays from './daysclass';
 
 
-
+//Fonction permetant de recuperer le nombre de jour en parcourant le mois entier avec un while.
 function getDaysInMonth(month, year) {
     var date = new Date(year, month, 1);
     var days = [];
@@ -14,6 +14,7 @@ function getDaysInMonth(month, year) {
     return days;
 }
 
+//declaration des variables DOM plus la date actuelle.
 let currentDate = dayjs();
 let getInputValue = document.getElementById('input-date');
 let getCalendar = document.getElementById('calendar');
@@ -23,7 +24,7 @@ let getFormAdd = document.getElementById('form-add');
 
 
 
-
+//Section permetant d'afficher le calendrier au chargement de la page.
 getInputValue.setAttribute('value', currentDate.$y + '-' + 0+(currentDate.$M+1) + '-' + currentDate.$D)
 let daysArray = []
 let newDate = dayjs(getInputValue.value)
@@ -38,7 +39,7 @@ daysArray[0].map(day => {
     createDiv.appendChild(createtextContent)
     getCalendar.appendChild(createDiv)
 })
-
+// onclick permetant de savoir sur lequel des boutons on a cliqués.
 let getDaysbutton = document.querySelectorAll('.daysbutton');
     for (let i = 0; i < getDaysbutton.length; i++) {
         let newDates = currentDate;
@@ -64,7 +65,7 @@ let getDaysbutton = document.querySelectorAll('.daysbutton');
             detailDay.appendChild(createDiv);
         }
     }
-
+//Event listener pour le changement de l'input, au changement il recharge les jours
 getInputValue.addEventListener('change', ()=> {
     getCalendar.innerHTML = ''
     let daysArray = []
@@ -84,7 +85,7 @@ getInputValue.addEventListener('change', ()=> {
     for (let i = 0; i < getDaysbutton.length; i++) {
         let newDates = currentDate;
         newDates = dayjs(getInputValue.value)
-
+    // section permetant de supprimer la notification de succes au clique d'une autre case de jour.
         getDaysbutton[i].onclick = () => {
             let successSection = document.getElementById('set-success');
             if (successSection.hasChildNodes() == true) {
@@ -108,7 +109,7 @@ getInputValue.addEventListener('change', ()=> {
         }
     }
 })
-
+//Event listener du form pour ajouter un evenement a l'objet jour. ( supprime la notif si il y en a une)
 getFormAdd.addEventListener('submit', (e) =>{
     let successSection = document.getElementById('set-success');
             if (successSection.hasChildNodes() == true) {
@@ -130,7 +131,7 @@ getFormAdd.addEventListener('submit', (e) =>{
     allEvents()
 })
 
-
+//Section qui permet de lire le sessionStorage et d'afficher le contenu dans la section "Tout les évenements".
 const allEvents = () => {
     let allEvents = document.getElementById('all-events');
     let values = [];
