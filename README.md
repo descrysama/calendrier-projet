@@ -1,11 +1,13 @@
-# New Project
+# Projet Calendrier
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+> ✨ Snowpack. Pour l'installation veuillez cloner le projet, et faire :
 
-## Available Scripts
+### npm install
+
+> Puis :
 
 ### npm start
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+
+Ouvrez l'app à l'adresse suivante : http://localhost:8080 
 
